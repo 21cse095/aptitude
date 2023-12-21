@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class ProjectCompletion {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+       System.out.print("Enter the total number of hours needed: ");
+        int totalHoursNeeded = scanner.nextInt();
+
+        System.out.print("Enter the number of days: ");
+        int numberOfDays = scanner.nextInt();
+
+        System.out.print("Enter the number of workers: ");
+        int numberOfWorkers = scanner.nextInt();
+
+        // Calculate total available hours considering training days
+        int totalAvailableHours = calculateAvailableHours(numberOfDays);
+
+        // Calculate total work hours with overtime
+        int totalWorkHours = calculateTotalWorkHours(numberOfDays, numberOfWorkers);
+
+        // Calculate the difference between total available hours and total work hours
+        int hoursDifference = totalWorkHours - totalAvailableHours;
+
+        // Output the result
+        if (hoursDifference <= 0) {
+            System.out.println("Yes! " + Math.abs(hoursDifference) + " hours left.");
+        } else {
+            System.out.println("Not enough time! " + hoursDifference + " hours needed.");
+        }
+
+        scanner.close();
+    }
+
+    
+    private static int calculateAvailableHours(int numberOfDays) {
+        // Assuming 10% of days are for training
+        int trainingDays = (int) (0.10 * numberOfDays);
+        int normalWorkingDays = numberOfDays - trainingDays;
+
+        // Assuming a normal working day is 8 hours long
+        return normalWorkingDays * 8;
+    }
+
+    // Function to calculate total work hours with overtime
+    private static int calculateTotalWorkHours(int numberOfDays, int numberOfWorkers) {
+        // Assuming every worker must work on the project with 2 hours overtime per day
+        return numberOfDays * numberOfWorkers * 10;
+    }
+}
+
+\\OUTPUT
+\\Enter the total number of hours needed: 50
+\\Enter the number of days: 30
+\\Enter the number of workers: 20
+\\Not enough time! 5784 hours needed.
