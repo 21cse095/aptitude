@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class MiddleValueProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Get input values
+        System.out.print("Enter the value of x: ");
+        int x = scanner.nextInt();
+        System.out.print("Enter the value of y: ");
+        int y = scanner.nextInt();
+        System.out.print("Enter the value of z: ");
+        int z = scanner.nextInt();
+        // Find and print the middle value
+        int middleValue = findMiddleValue(x, y, z);
+        System.out.println("The middle value is: " + middleValue);
+        scanner.close();
+    }
+// Function to find the middle value among three distinct values
+    private static int findMiddleValue(int x, int y, int z) {
+        if ((x < y && y < z) || (z < y && y < x)) {
+            return 2; // y is the middle value
+        } else if ((y < x && x < z) || (z < x && x < y)) {
+            return 1; // x is the middle value
+        } else {
+            return 3; // z is the middle value
+        }}}
+//OUTPUT
+//Enter the value of x: 1000
+//Enter the value of y: 2000000
+//Enter the value of z: 146
+//The middle value is: 1
