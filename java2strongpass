@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class PasswordStrengthChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the password: ");
+        String password = scanner.nextLine();
+       // Check password strength
+        boolean isStrong = checkPasswordStrength(password);
+        // Print the result
+        if (isStrong) {
+            System.out.println("Password is strong.");
+        } else {
+            System.out.println("Password is not strong. Please ensure it meets the criteria.");
+        }
+
+        scanner.close();
+    }
+
+   
+    private static boolean checkPasswordStrength(String password) {
+        boolean hasLowercase = password.matches(".*[a-z].*");
+        boolean hasUppercase = password.matches(".*[A-Z].*");
+        boolean hasSpecialChar = password.matches(".*[!@#$%^&*()-+].*");
+        boolean hasMinLength = password.length() >= 8;
+       // Check for at least one digit
+        boolean hasDigit = password.matches(".*\\d.*");
+       // Password is strong if it meets all criteria
+        return hasLowercase && hasUppercase && hasSpecialChar && hasMinLength && hasDigit;
+    }
+}
+//OUTPUT
+//Enter the password: yesHA$095
+//Password is strong.
