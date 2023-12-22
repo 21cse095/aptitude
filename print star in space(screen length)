@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <string.h>
+void justifySentence(char sentence[], int screenLength) {
+    int length = strlen(sentence);
+    // Calculate the number of spaces to be filled with stars
+    int spacesToFill = screenLength - length;
+    // Calculate the total number of gaps between words
+    int wordCount = 0;
+    for (int i = 0; i < length; i++) {
+        if (sentence[i] == ' ') {
+            wordCount++;
+        }
+    }
+    // Calculate the number of stars to be placed between words
+    int totalStars = (wordCount > 0) ? spacesToFill / wordCount : 0;
+    // Initialize variables
+    int currentLength = 0;
+    // Iterate through the sentence
+    for (int i = 0; i < length; i++) {
+        if (sentence[i] != ' ') {
+            printf("%c", sentence[i]);
+            currentLength++;
+        } else {
+            // Replace space with stars
+            int starsToPrint = totalStars;
+
+            while (starsToPrint > 0) {
+                printf("*");
+                starsToPrint--;
+                currentLength++;
+            }
+        }
+    }
+
+    printf("\n");
+}
+int main() {
+    char sentence[100];
+    int screenLength;
+
+    // Input
+    printf("Enter the sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    printf("Enter the screen length: ");
+    scanf("%d", &screenLength);
+
+    // Function call to justify the sentence
+    printf("Output:\n");
+    justifySentence(sentence, screenLength);
+
+    return 0;
+}
+\\OUTPUT
+\\Enter the sentence: rei mogho happy ker ra
+\\Enter the screen length: 50
+\\Output:
+\\rei******mogho******happy******ker******ra
