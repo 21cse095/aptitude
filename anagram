@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+// Function to check if two strings are anagrams
+bool areAnagrams(char *s, char *t) {
+    // Check if lengths are different
+    if (strlen(s) != strlen(t)) {
+        return false;
+    }
+    // Initialize an array to store the count of each character
+    int count[26] = {0};
+    // Increment count for characters in string s
+    for (int i = 0; s[i] != '\0'; i++) {
+        count[s[i] - 'a']++;
+    }
+    // Decrement count for characters in string t
+    for (int i = 0; t[i] != '\0'; i++) {
+        count[t[i] - 'a']--;
+    }
+    // Check if all counts are zero
+    for (int i = 0; i < 26; i++) {
+        if (count[i] != 0) {
+            return false;
+        }
+    }
+    // If all counts are zero, strings are anagrams
+    return true;
+}
+int main() {
+    // Input strings from the user
+    char s[100], t[100];
+    
+    printf("Enter the first string: ");
+    scanf("%s", s);
+
+    printf("Enter the second string: ");
+    scanf("%s", t);
+   // Check if strings are anagrams and display the result
+    printf("Result: %s\n", areAnagrams(s, t) ? "true" : "false");
+
+    return 0;
+}
