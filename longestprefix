@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// Function to find the longest common prefix
+char* longestCommonPrefix(char** strs, int strsSize) {
+    // If the array is empty, return an empty string
+    if (strsSize == 0) {
+        char* result = (char*)malloc(1);
+        result[0] = '\0';
+        return result;
+    }
+    // Iterate through the characters of the first string
+    for (int i = 0; strs[0][i] != '\0'; i++) {
+        // Compare the character with the corresponding characters in the other strings
+        for (int j = 1; j < strsSize; j++) {
+            if (strs[j][i] != strs[0][i] || strs[j][i] == '\0') {
+                // If characters don't match or end of a string is reached, return the prefix
+                char* result = (char*)malloc(i + 1);
+                strncpy(result, strs[0], i);
+                result[i] = '\0';
+                return result;
+            }
+        }
+    }
+
+    // If all characters match, return the entire first string as the common prefix
+    return strdup(strs[0]);
+}
+int main() {
+    // Input the number of strings
+    int n;
+    printf("Enter the number of strings: ");
+    scanf("%d", &n);
+    // Input the strings from the user
+    char** strs = (char**)malloc(n * sizeof(char*));
+    for (int i = 0; i < n; i++) {
+        printf("Enter string %d: ", i + 1);
+        char buffer[100];  // Assuming a maximum length of 100 for each string
+        scanf("%s", buffer);
+        strs[i] = strdup(buffer);
+    }
+   // Find and display the longest common prefix
+    printf("Longest Common Prefix: %s\n", longestCommonPrefix(strs, n));
+
+    // Free allocated memory
+    for (int i = 0; i < n; i++) {
+        free(strs[i]);
+    }
+    free(strs);
+
+    return 0;
+}
