@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Function to generate letter combinations
+void generateCombinations(char* digits, char** mapping, int index, char* current, char** result, int* resultSize) {
+    if (digits[index] == '\0') {
+        // Base case: end of the digit string
+        if (index > 0) {
+            result[*resultSize] = strdup(current);
+            (*resultSize)++;
+        }
+        return;
+    }
+
+    int digit = digits[index] - '0';
+    for (int i = 0; i < strlen(mapping[digit]); i++) {
+        current[index] = mapping[digit][i];
+        generateCombinations(digits, mapping, index + 1, current, result, resultSize);
+    }
+}
+
+// Function to initialize and call the recursive function
+char** letterCombinations(char* digits, int* returnSize) {
+    // Mapping of digits to letters
+    char* mapping[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+    // Allocate memory for the result
+    char** result = (char**)malloc(10000 * sizeof(char*));
+    *returnSize = 0;
+
+    // Allocate memory for the current combination
+    char* current = (char*)malloc((strlen(digits) + 1) * sizeof(char));
+    current[strlen(digits)] = '\0';
+
+    // Call the recursive function to generate combinations
+    generateCombinations(digits, mapping, 0, current, result, returnSize);
+
+    // Free allocated memory
+    free(current);
+
+    return result;
+}
+
+int main() {
+    // Input the digits from the user
+    char digits[100];
+    printf("Enter digits (2-9 inclusive): ");
+    scanf("%s", digits);
+
+    // Call the function to generate letter combinations
+    int returnSize;
+    char** result = letterCombinations(digits, &returnSize);
+
+    // Display the result
+    printf("Output:\n");
+    for (int i = 0; i < returnSize; i++) {
+        printf("%s\n", result[i]);
+        free(result[i]);
+    }
+
+    // Free allocated memory for the result
+    free(result);
+
+    return 0;
+}
+\\OUTPUT
+\\Enter digits (2-9 inclusive): 25
+\\Output:
+\\aj
+\\ak
+\\al
+\\bj
+\\bk
+\\bl
+\\cj
+\\ck
+\\cl
