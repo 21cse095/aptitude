@@ -1,0 +1,48 @@
+#include <stdio.h>
+swap (int *, int *);
+int main()
+{
+    int a, b;
+    printf("\nEnter value of a & b: ");
+    scanf("%d %d", &a, &b);
+    printf("Before Swapping:\n");
+    printf("a = %d\nb = %d\n", a, b);
+    swap(&a, &b);
+    printf("After Swapping:\n");
+    printf("a = %d\nb = %d", a, b);
+    return 0;
+}
+swap (int *x, int *y)
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+\\output
+\\Enter value of a & b: 11 22
+\\Before Swapping:
+\\a = 11
+\\b = 22
+\\After Swapping:
+\\a = 22
+\\b = 11
+
+#include <stdio.h>
+void swap(int x, int y){
+    int temp = x;
+    x = y;
+    y = temp;
+}
+int main(){
+    int x,y;
+    printf("\nEnter value of x & y: ");
+    scanf("%d %d", &x, &y);
+    printf("Values before swap: x = %d, y = %d\n", x,y);
+    swap(x,y);
+    printf("Values after swap: x = %d, y = %d", x,y);
+}
+\\output
+\\Enter value of x & y: 11 22
+\\Values before swap: x = 11, y = 22
+\\Values after swap: x = 11, y = 22
