@@ -1,0 +1,40 @@
+#include <stdio.h>
+void findDuplicates(int arr[], int n) {
+    int i, j;
+    int flag = 0;
+    printf("Duplicate elements: ");
+    for (i = 0; i < n; i++) {
+        // Check if the element is already marked as duplicate
+        if (arr[abs(arr[i])] >= 0) {
+            arr[abs(arr[i])] = -arr[abs(arr[i])];
+        } else {
+            // If the element is marked as duplicate, print it
+            if (flag == 0) {
+                flag = 1;
+            } else {
+                printf(" ");
+            }
+            printf("%d", abs(arr[i]));
+        }
+    }
+    if (flag == 0) {
+        printf("-1");
+    }
+    printf("\n");
+}
+int main() {
+    int N;
+    printf("Enter the size of the array: ");
+    scanf("%d", &N);
+    int a[N];
+    printf("Enter the array elements: ");
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &a[i]);
+    }
+    findDuplicates(a, N);
+    return 0;
+}
+\\OUTPUT
+\\Enter the size of the array: 6
+\\Enter the array elements: 1 2 2 3 4 4
+\\Duplicate elements: 2 4
