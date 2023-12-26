@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class StringCompression {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+        scanner.close();
+        String compressed = compressString(input);
+        System.out.println("Input: " + input);
+        System.out.println("Output: " + compressed);
+    }
+    private static String compressString(String input) {
+        StringBuilder compressed = new StringBuilder();
+        int count = 1;
+        for (int i = 0; i < input.length(); i++) {
+            // If the current character is the same as the next one, increment the count
+            if (i < input.length() - 1 && input.charAt(i) == input.charAt(i + 1)) {
+                count++;
+            } else {
+                // Append the current character and its count to the compressed string
+                compressed.append(input.charAt(i));
+                if (count > 1) {
+                    compressed.append(count);
+                }
+                count = 1; // Reset the count for the next character
+            }
+        }
+
+        return compressed.toString();
+    }
+}
+\\OUTPUT
+\\Enter a string: aassddffjkiu11122223
+\\Input: aassddffjkiu11122223
+\\Output: a2s2d2f2jkiu13243
