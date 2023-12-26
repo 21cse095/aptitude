@@ -1,0 +1,32 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class OddEvenArrays {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        System.out.println("Enter the elements of the array:");
+        int[] inputArray = new int[size];
+        for (int i = 0; i < size; i++) {
+            System.out.print("Element " + (i + 1) + ": ");
+            inputArray[i] = scanner.nextInt();
+        }
+        scanner.close();
+        int[] evenArray = getEvenArray(inputArray);
+        int[] oddArray = getOddArray(inputArray);
+        System.out.println("Even Array: " + Arrays.toString(evenArray));
+        System.out.println("Odd Array: " + Arrays.toString(oddArray));
+    }
+    // Function to get an array containing even elements
+    private static int[] getEvenArray(int[] inputArray) {
+        return Arrays.stream(inputArray)
+                .filter(num -> num % 2 == 0)
+                .toArray();
+    }
+    // Function to get an array containing odd elements
+    private static int[] getOddArray(int[] inputArray) {
+        return Arrays.stream(inputArray)
+                .filter(num -> num % 2 != 0)
+                .toArray();
+    }
+}
