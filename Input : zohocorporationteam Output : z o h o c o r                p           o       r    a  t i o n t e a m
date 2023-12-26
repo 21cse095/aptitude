@@ -1,0 +1,27 @@
+import java.util.Scanner;
+class zoho {
+    public static void main(String[] args) {
+        String s;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the string:");
+        s = sc.nextLine();
+        int len = s.length();
+        int n = (len+2)/3;
+        for(int i=0;i<n;i++){
+            System.out.print(s.charAt(i));
+        }
+        System.out.println();
+        for(int i=1;i<n-1;i++){
+            int space = n-i-1;
+            for(int j=0;j<space;j++){
+                System.out.print(" ");
+            }
+            System.out.println(s.charAt(n+i-1));
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(s.charAt(2*n+i-2));
+        }
+        System.out.println();
+    }
+    
+}
