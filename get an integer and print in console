@@ -1,0 +1,18 @@
+import java.util.Scanner;
+public class DisplayInteger {
+    public static void main(String[] args) {
+        // Create a Scanner object to read user input
+        Scanner scanner = new Scanner(System.in);
+        // user input
+        System.out.print("Enter an integer: ");
+        // Read user input
+        int enteredInteger = scanner.nextInt();
+        // Display user input
+        System.out.println("You entered: " + enteredInteger);
+        // Close the scanner to prevent resource leaks
+        scanner.close();
+    }
+}
+\\output
+\\Enter an integer: 11
+\\You entered: 11
