@@ -25,23 +25,8 @@ class zoho {
     }
     
 }
-1. Given an array . Create two arrays one for Odd Elements and other for Even Elements.
-Input: [10,3,5,12,17,22]
-Output:
-[10,12,22]
-[3,5,7]
-
-2.Compression of String
-
-Input: AAABBC
-Output: A3B2C
-
-Input: AAABBCCCDE
-Output: A3B2C3DE
-
-3. 
-Input : zohocorporationteam
-Output :
+//Input : zohocorporationteam
+//Output :
 z o h o c o r
                p
           o
