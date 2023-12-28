@@ -17,5 +17,9 @@ public class Main {
         }
     }
 }
-  
+\\OUTPUT
+\\Number 34543 is PalPrime
+\\Number 727 is PalPrime
+BUILD SUCCESSFUL (total time: 2 seconds)
+   
 
