@@ -44,3 +44,19 @@
     }
     
 }
+\\OUTPUT
+\\Transaction Details:
+\\Account id: 12344
+\\Name: Account A
+\\Account Balance: Rs.3500.0
+
+\\Account A Balance after the first transaction: Rs.3500.0
+
+\\Transaction Details:
+\\Account id: 56789
+\\Name: Account B
+\\Account Balance: Rs.1000.0
+
+\\Account A Balance after the second transaction: Rs.6500.0
+\\BUILD SUCCESSFUL (total time: 1 second)
+
