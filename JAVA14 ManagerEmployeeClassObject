@@ -1,0 +1,109 @@
+import java.util.Scanner;
+class Member {
+    String name;
+    int age;
+    String phoneNumber;
+    String address;
+    double salary;
+    public void printSalary() {
+        System.out.println("Salary: " + salary);
+    }
+}
+class Employee extends Member {
+    String specialization;
+}
+class Manager extends Member {
+    String department;
+}
+public class NewClass {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Creating an Employee object and getting input from the user
+        Employee employee = new Employee();
+        System.out.print("Enter Employee's Name: ");
+        employee.name = scanner.nextLine();
+        System.out.print("Enter Employee's Age: ");
+        employee.age = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Enter Employee's Phone Number: ");
+        employee.phoneNumber = scanner.nextLine();
+        System.out.print("Enter Employee's Address: ");
+        employee.address = scanner.nextLine();
+        System.out.print("Enter Employee's Salary: ");
+        employee.salary = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline character
+        System.out.print("Enter Employee's Specialization: ");
+        employee.specialization = scanner.nextLine();
+        // Creating a Manager object and getting input from the user
+        Manager manager = new Manager();
+        System.out.println("\nEnter Manager's Name: ");
+        manager.name = scanner.nextLine();
+        System.out.println("Enter Manager's Age: ");
+        manager.age = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+        System.out.println("Enter Manager's Phone Number: ");
+        manager.phoneNumber = scanner.nextLine();
+        System.out.println("Enter Manager's Address: ");
+        manager.address = scanner.nextLine();
+        System.out.println("Enter Manager's Salary: ");
+        manager.salary = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline character
+        System.out.println("Enter Manager's Department: ");
+        manager.department = scanner.nextLine();
+        scanner.close(); // Close the scanner
+
+        // Printing information for the Employee
+        System.out.println("\nEmployee Information:");
+        System.out.println("Name: " + employee.name);
+        System.out.println("Age: " + employee.age);
+        System.out.println("Phone Number: " + employee.phoneNumber);
+        System.out.println("Address: " + employee.address);
+        employee.printSalary(); // Using the printSalary method
+        System.out.println("Specialization: " + employee.specialization);
+        // Printing information for the Manager
+        System.out.println("\nManager Information:");
+        System.out.println("Name: " + manager.name);
+        System.out.println("Age: " + manager.age);
+        System.out.println("Phone Number: " + manager.phoneNumber);
+        System.out.println("Address: " + manager.address);
+        manager.printSalary(); // Using the printSalary method
+        System.out.println("Department: " + manager.department);
+    }
+}
+\\OUTPUT
+\\Enter Employee's Name: yesh
+\\Enter Employee's Age: 20
+\\Enter Employee's Phone Number: 123456789
+\\Enter Employee's Address: plot 6,MGM nagr
+\\Enter Employee's Salary: 10000
+\\Enter Employee's Specialization: CSE
+
+\\Enter Manager's Name: 
+\\hirthish
+\\Enter Manager's Age: 
+\\30
+\\Enter Manager's Phone Number: 
+\\987654321
+\\Enter Manager's Address: 
+\\7,OMR,chennai
+\\Enter Manager's Salary: 
+\\20000
+\\Enter Manager's Department: 
+\\automation
+
+\\Employee Information:
+\\Name: yesh
+\\Age: 20
+\\Phone Number: 123456789
+\\Address: plot 6,MGM nagr
+\\Salary: 10000.0
+\\Specialization: CSE
+
+\\Manager Information:
+\\Name: hirthish
+\\Age: 30
+\\Phone Number: 987654321
+\\Address: 7,OMR,chennai
+\\Salary: 20000.0
+\\Department: automation
+\\BUILD SUCCESSFUL (total time: 3 minutes 4 seconds)
