@@ -1,0 +1,43 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class RemoveDuplicates {
+
+    public static int removeDuplicates(int[] nums) {
+        if (nums.length == 0) {
+            return 0; // Empty array has 0 unique elements
+        }
+
+        int uniqueCount = 1; // At least the first element is unique
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]) {
+                nums[uniqueCount++] = nums[i];
+            }
+        }
+
+        return uniqueCount;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+
+        int[] inputArray = new int[size];
+
+        System.out.println("Enter the elements of the array in increasing order:");
+        for (int i = 0; i < size; i++) {
+            inputArray[i] = scanner.nextInt();
+        }
+
+        System.out.println("Input Array: " + Arrays.toString(inputArray));
+
+        int uniqueCount = removeDuplicates(inputArray);
+
+        System.out.println("Array after removing duplicates: " + Arrays.toString(Arrays.copyOf(inputArray, uniqueCount)));
+        System.out.println("Number of unique elements: " + uniqueCount);
+
+        scanner.close();
+    }
+}
