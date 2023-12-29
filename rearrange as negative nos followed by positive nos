@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class RearrangeArray {
+    public static void rearrangeArray(int[] arr) {
+        int n = arr.length;
+        // Traverse the array and move negative numbers to the front
+        int negativeIndex = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] < 0) {
+                // Swap arr[i] with arr[negativeIndex]
+                int temp = arr[i];
+                arr[i] = arr[negativeIndex];
+                arr[negativeIndex] = temp;
+
+                negativeIndex++;
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+
+        int[] inputArray = new int[size];
+
+        System.out.println("\nEnter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            inputArray[i] = scanner.nextInt();
+        }
+
+        System.out.println("\nInput Array: " + Arrays.toString(inputArray));
+
+        rearrangeArray(inputArray);
+
+        System.out.println("\nArray after rearranging: " + Arrays.toString(inputArray));
+
+        scanner.close();
+    }
+}
