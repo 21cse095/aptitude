@@ -1,0 +1,29 @@
+public class ConstructorExample {
+    // No arguments constructor
+    public ConstructorExample() {
+        System.out.println("No arguments constructor called.");
+    }
+    // Default constructor
+    public ConstructorExample(int value) {
+        System.out.println("Default constructor called with value: " + value);
+    }
+    // Parameterized constructor with different types of parameters
+    public ConstructorExample(String name) {
+        System.out.println("Parameterized constructor called with name: " + name);
+    }
+    public ConstructorExample(int age, double salary) {
+        System.out.println("\nParameterized constructor called with age: " + age + " and salary: " + salary);
+    }
+    public static void main(String[] args) {
+        // Creating objects using different constructors
+        ConstructorExample obj1 = new ConstructorExample();
+        ConstructorExample obj2 = new ConstructorExample(11);
+        ConstructorExample obj3 = new ConstructorExample("yesh");
+        ConstructorExample obj4 = new ConstructorExample(21, 50000.0);
+    }
+}
+\\OUTPUT
+\\No arguments constructor called.
+\\Default constructor called with value: 11
+\\Parameterized constructor called with name: yesh
+\\Parameterized constructor called with age: 21 and salary: 50000.0
