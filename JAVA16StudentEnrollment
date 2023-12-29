@@ -1,0 +1,123 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+// Base class Person
+class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+// Subclass Student
+class Student extends Person {
+    private int studentId;
+    private List<String> completedCourses;
+
+    public Student(String name, int age, int studentId) {
+        super(name, age);
+        this.studentId = studentId;
+        this.completedCourses = new ArrayList<>();
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public List<String> getCompletedCourses() {
+        return completedCourses;
+    }
+
+    public void completeCourse(String courseName) {
+        completedCourses.add(courseName);
+    }
+}
+
+// Subclass Professor
+class Professor extends Person {
+    private String employeeId;
+
+    public Professor(String name, int age, String employeeId) {
+        super(name, age);
+        this.employeeId = employeeId;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+}
+
+// Course class
+class Course {
+    private String courseName;
+    private List<String> prerequisites;
+    private List<Student> enrolledStudents;
+
+    public Course(String courseName, List<String> prerequisites) {
+        this.courseName = courseName;
+        this.prerequisites = prerequisites;
+        this.enrolledStudents = new ArrayList<>();
+    }
+
+    public void enrollStudent(Student student) {
+        if (studentHasPrerequisites(student)) {
+            enrolledStudents.add(student);
+            System.out.println("Student " + student.getName() + " enrolled in course " + courseName);
+        } else {
+            System.out.println("Student " + student.getName() + " cannot enroll in course " + courseName +
+                    " due to missing prerequisites.");
+        }
+    }
+
+    private boolean studentHasPrerequisites(Student student) {
+        return student.getCompletedCourses().containsAll(prerequisites);
+    }
+
+    public void displayEnrolledStudents() {
+        System.out.println("Enrolled students in course " + courseName + ":");
+        for (Student student : enrolledStudents) {
+            System.out.println("Student ID: " + student.getStudentId() +
+                    ", Name: " + student.getName() +
+                    ", Age: " + student.getAge());
+        }
+    }
+}
+
+// Main class for testing
+public class NewClass {
+    public static void main(String[] args) {
+        // Create students
+        Student student1 = new Student("Alice", 20, 1);
+        student1.completeCourse("Math101");
+        student1.completeCourse("Physics101");
+
+        Student student2 = new Student("Bob", 22, 2);
+        student2.completeCourse("Math101");
+
+        // Create a professor
+        Professor professor = new Professor("Dr. Smith", 40, "P123");
+
+        // Create a course with prerequisites using Arrays.asList
+        List<String> mathPrerequisites = new ArrayList<>(Arrays.asList("Physics101"));
+        Course mathCourse = new Course("Mathematics", mathPrerequisites);
+
+        // Enroll students in the course
+        mathCourse.enrollStudent(student1);
+        mathCourse.enrollStudent(student2);
+
+        // Display enrolled students
+        mathCourse.displayEnrolledStudents();
+    }
+}
