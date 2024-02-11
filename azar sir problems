@@ -261,8 +261,45 @@ Enter the second string: tree
 Result after concatenation and removal: batree
 BUILD SUCCESSFUL (total time: 8 seconds)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class NextBigElement {
+    public static void main(String[] args) {
+        int[] inputArray = {3, 7, 1, 5, 9, 2, 6};
+        int[] resultArray = findNextBigElement(inputArray);
+        System.out.print("Input Array: ");
+        printArray(inputArray);
+        System.out.print("Result Array: ");
+        printArray(resultArray);
+    }
+    public static int[] findNextBigElement(int[] inputArray) {
+        int[] resultArray = new int[inputArray.length];
 
+        for (int i = 0; i < inputArray.length; i++) {
+            int nextBig = -1; 
+            for (int j = i + 1; j < inputArray.length; j++) {
+                if (inputArray[j] > inputArray[i]) {
+                    nextBig = inputArray[j];
+                    break; 
+                }
+            }
+            resultArray[i] = nextBig;
+        }
 
+        return resultArray;
+    }
+    public static void printArray(int[] array) {
+        for (int value : array) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
+    }
+}
+OUTPUT
+Input Array: 3 7 1 5 9 2 6 
+Result Array: 7 9 5 9 -1 6 -1 
+BUILD SUCCESSFUL (total time: 0 seconds)
 
-
+Input Array: 1 2 4 6 9 
+Result Array: 2 4 6 9 -1 
+BUILD SUCCESSFUL (total time: 0 seconds)//after 9 next big element is not there so prints -1
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
