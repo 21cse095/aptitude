@@ -1,0 +1,268 @@
+import java.util.Scanner;
+public class SumOfDigits {
+    public static void main(String args[]) {
+      Scanner sc = new Scanner(System.in);
+      System.out.print("Enter a number to find its sum of digits: ");//eg 144
+      int num = sc.nextInt();
+      int sum=0;
+      while(num>0){
+          int digits = num%10; //to retrive each digits of the number from last ,eg:4
+          sum=sum+digits; //summing up the retrieved digits, eg sum=4
+          num=num/10; //finding the remaining substring of the number ,eg num=14
+      }
+      System.out.println("Sum of the digits : "+sum);
+    }
+}
+OUTPUT
+Enter a number to find its sum of digits: 144
+Sum of the digits : 9
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class pattern {
+     public static void main(String[] args){
+        int n=5;
+        for(int i=1;i<=n;i++){
+            for(int j=i;j<=n;j++){
+                System.out.print(" ");
+            }
+            for(int j=1;j<i;j++){
+                System.out.print("+");
+            }
+            for(int j=1;j<=i;j++){
+                System.out.print("+");
+            }
+            System.out.println();
+        }
+    }    
+}
+OUTPUT
+     +
+    +++
+   +++++
+  +++++++
+ +++++++++
+BUILD SUCCESSFUL (total time: 0 seconds)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+COOL NUMBER OR NOT ,if cool : sum of any digits = sum of other digits 
+public class coolNumber {
+    public static void main(String[] args) {
+        long number = 23650;        
+        if (isCool(number)) {
+            System.out.println(number + " is a cool number");
+        } else {
+            System.out.println(number + " is not a cool number");
+        }
+    }    
+    public static boolean isCool(long number) {
+        String numStr = String.valueOf(number);
+        int n = numStr.length();        
+        // Convert the number to an array of digits
+        int[] digits = new int[n];
+        for (int i = 0; i < n; i++) {
+            digits[i] = Character.getNumericValue(numStr.charAt(i));
+        }        
+        // Calculate the total sum of digits
+        int totalSum = 0;
+        for (int digit : digits) {
+            totalSum += digit;
+        }        
+        // Check all possible subsets of digits
+        for (int subsetMask = 0; subsetMask < (1 << n); subsetMask++) {
+            int subsetSum = 0;
+            for (int i = 0; i < n; i++) {
+                if ((subsetMask & (1 << i)) != 0) {
+                    subsetSum += digits[i];
+                }
+            }
+            if (subsetSum == totalSum - subsetSum) {
+                return true;
+            }
+        }        
+        return false;
+    }
+}
+OUTPUT
+236 is not a cool number.
+BUILD SUCCESSFUL (total time: 0 seconds)
+23650 is a cool number
+BUILD SUCCESSFUL (total time: 0 seconds)    //2+6=3+5+0 i.e 8=8
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AVG OF ANY SUBSET OF INPUT ARRAY MUST BE EQUAL TO THE AVG OF THE INPUT ARRAY, IF SO RETURN THE SUBSETS
+public class SubsetWithEqualAverage {
+    public static void findSubsets(int[] arr) {
+        double overallAvg = calculateAverage(arr);
+
+        for (int i = 1; i < Math.pow(2, arr.length); i++) {
+            int sum = 0;
+            int count = 0;
+            for (int j = 0; j < arr.length; j++) {
+                if ((i & (1 << j)) > 0) { // Check if jth bit is set in i
+                    sum += arr[j];
+                    count++;
+                }
+            }
+            if (sum / count == overallAvg) {
+                System.out.print("Subset: [");
+                boolean firstElement = true; // Flag to avoid trailing comma
+                for (int j = 0; j < arr.length; j++) {
+                    if ((i & (1 << j)) > 0) {
+                        if (firstElement) {
+                            System.out.print(arr[j]);
+                            firstElement = false; // Disable comma for first element
+                        } else {
+                            System.out.print(", " + arr[j]);
+                        }
+                    }
+                }
+                System.out.println("]");
+            }
+        }
+    }
+    private static double calculateAverage(int[] arr) {
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+        return (double) sum / arr.length;
+    }
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40};
+        findSubsets(arr);
+    }
+}
+OUTPUT
+Subset: [20, 30]
+Subset: [10, 40]
+Subset: [10, 20, 30, 40]
+BUILD SUCCESSFUL (total time: 0 seconds)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FINDING THE LOWEST PRODUCT OF ANY THREE NUMBERS IN THE ARRAY
+import java.util.Arrays;
+import java.util.Scanner;
+public class LowestProductOfThree {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);        
+        System.out.print("Enter the size of the array: ");
+        int n = sc.nextInt();       
+        System.out.println("Enter the array elements:");
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }       
+        int lowestProduct = findLowestProductOfThree(nums);
+        System.out.println("Lowest product of any three numbers from the array: " + lowestProduct);        
+        sc.close();
+    }    
+    public static int findLowestProductOfThree(int[] nums) {
+        if (nums.length < 3) {
+            throw new IllegalArgumentException("Array size must be at least 3");
+        }              
+        Arrays.sort(nums);    //[-9,-4,1,2,5] 4 possiblites for multiplying three numbers    
+        int n = nums.length;      
+        // Product of the three largest positive numbers
+        //int product1 = nums[n - 1] * nums[n - 2] * nums[n - 3];
+         // Product of the three smallest negative numbers
+         int product1 = nums[0] * nums[1] * nums[2];
+         //product of one negative and two positive numbers
+         int product2 = nums[0] * nums[2] *nums[n-1];
+         //product of two negative and one positive
+         // Return the minimum of the two products
+        return Math.min(product1, product2);
+    }
+}
+OUTPUT
+Enter the size of the array: 5
+Enter the array elements:
+1 2 -4 -9 5
+Lowest product of any three numbers from the array: -45
+BUILD SUCCESSFUL (total time: 20 seconds)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Takes an array of integers and a target difference as input and displays the count of pairs of numbers that, when subtracted from each other, result in the target difference
+import java.util.Arrays;
+import java.util.Scanner;
+public class pairCount{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);      
+        System.out.print("Enter the size of the array: ");
+        int n = sc.nextInt(); 
+        System.out.println("Enter the array elements:");
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }    
+        System.out.print("Enter the target difference: ");
+        int targetDifference = sc.nextInt();
+        int pairCount = count(nums, targetDifference);
+        System.out.println("Count of pairs with target difference: " + pairCount);
+
+        sc.close();
+    }
+   public static int count(int[] nums, int targetDifference) {
+        Arrays.sort(nums);
+        int pairCount = 0;
+        int left = 0, right = 1;
+        while (right < nums.length) {
+            int diff = nums[right] - nums[left];
+            if (diff == targetDifference) {
+                pairCount++;
+                left++;
+                right++;
+            } else if (diff < targetDifference) {
+                right++;
+            } else {
+                left++;
+            }
+        }
+        return pairCount;
+    }
+}
+//input elements= 4 6 8 1 3 7 9
+//target difference = 2
+// taking pair of elements ,subtracting it ,see if i get the target difference ,if so count=1[i.e one pair]
+// 6-4=2
+//8-6=2
+//3-1=2
+//9-7=2
+// so total count of pairs is 4
+OUTPUT
+Enter the size of the array: 7
+Enter the array elements:
+4 6 8 1 3 7 9
+Enter the target difference: 2
+Count of pairs with target difference: 4
+BUILD SUCCESSFUL (total time: 29 seconds)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner;
+public class batree {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);        
+        System.out.print("Enter the first string: ");
+        String first = sc.nextLine();     
+        System.out.print("Enter the second string: ");
+        String second = sc.nextLine();
+        // Concatenate the strings
+        String result = concatenateAndRemove(first, second);
+        System.out.println("Result after concatenation and removal: " + result);
+        sc.close();
+    }
+    public static String concatenateAndRemove(String first, String second) {
+        // Check if the last character of the first string matches the first character of the second string
+        if (!first.isEmpty() && !second.isEmpty() && first.charAt(first.length() - 1) == second.charAt(0)) {
+            // Remove the first character of the second string
+            second = second.substring(1);//0 index ignore pantu ,remaining substring from index 1 la irundhu edukuro
+        }
+        // Concatenate the strings and return
+        return first + second;
+    }
+}
+OUTPUT
+run:
+Enter the first string: bat
+Enter the second string: tree
+Result after concatenation and removal: batree
+BUILD SUCCESSFUL (total time: 8 seconds)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
