@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+class HelloWorld {
+    public static boolean Armstrong(int num){
+            int num1=num;
+            int num2=num;
+            int digits = 0;
+            while (num1 != 0) {
+            num1/= 10;
+            digits++;
+        }
+        int sum = 0;
+        int rem = 0;
+        while (num2!= 0) {
+            rem = num2 % 10;
+            sum += Math.pow(rem, digits);
+            num2/= 10;
+        }
+      return sum==num;
+   }
+    public static void main(String[] args) {
+        HelloWorld obj = new HelloWorld();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter n value: ");
+        int n = sc.nextInt();
+        for(int i =1;i<=n;i++){
+            if(obj.Armstrong(i)){
+                System.out.println(i);
+            }
+        }
+        
+    }
+}
+output
+java -cp /tmp/Dzz5TadFiY/HelloWorld
+enter n value: 
+10000
+1
+2
+3
+4
+5
+6
+7
+8
+9
+153
+370
+371
+407
+1634
+8208
+9474
+
+        
+
+        
