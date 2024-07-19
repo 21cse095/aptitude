@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class HelloWorld{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter a number: ");
+        int num = sc.nextInt();
+        System.out.println("enter pow number: ");
+        int pow = sc.nextInt();
+        int result = num;
+            for(int i =1;i<pow;i++){
+                result=result*num;
+            }
+       System.out.println(result);
+    }
+}
+output
+enter a number: 
+2
+enter pow number: 
+4
+16
