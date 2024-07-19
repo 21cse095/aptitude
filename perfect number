@@ -1,0 +1,41 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static boolean isPerfect(int num){
+     int result = 0;
+       for(int i =1; i<num;i++){
+           if(num%i==0){
+               result+=i;
+           }
+       }
+    return num==result;
+    }
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       System.out.println("enter n value to print perfect numbers from 1 to n: ");
+       int num = sc.nextInt();
+       HelloWorld obj = new HelloWorld();
+       for(int i =0;i<num;i++){
+         if(obj.isPerfect(i)){
+           System.out.println(i);
+         }
+       }
+    }
+}
+output
+enter n value to print perfect numbers from 1 to n: 
+500
+0
+6
+28
+496
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+      
