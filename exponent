@@ -19,3 +19,7 @@ enter a number:
 enter pow number: 
 4
 16
+using buitlin function
+int pow = sc.nextInt();
+        double result = Math.pow(num,pow);
+        System.out.println(result);
