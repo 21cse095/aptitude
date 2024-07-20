@@ -37,3 +37,20 @@ after swapping first and last digit: 5241
 
 enter number: 2
 2
+
+class HelloWorld {
+    public String Swap(String num){
+        char[] numArr = num.toCharArray();
+         char temp = numArr[0];
+        numArr[0] = numArr[numArr.length-1];
+        numArr[numArr.length-1] = temp;
+        return new String(numArr);
+    }
+    public static void main(String[] args) {
+        HelloWorld obj = new HelloWorld();
+        System.out.println(obj.Swap("1002"));
+    }
+}
+ouput:
+2001
+
