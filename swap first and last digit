@@ -6,6 +6,9 @@ class HelloWorld {
        Scanner sc = new Scanner(System.in);
        System.out.print("enter number: ");
        int num = sc.nextInt();
+       if(num<=10){
+           System.out.println(num);
+       }else{
        int first = num;
        int digitsCount = 0; //digitsCount = 3
        while(first>=10){
@@ -17,15 +20,20 @@ class HelloWorld {
        int remDigit = num % (int)Math.pow(10,digitsCount); //remDigit = 245
        //remaining digits excluding last digit
        remDigit = remDigit/10;                             //remDigit = 24
-       int swapped = last * (int)Math.pow(10,digitsCount) + //5000+240+1 = 5241
+       int swapped = last * (int)Math.pow(10,digitsCount) + //5000+240+1 = 
                      remDigit * 10 +  
                      first;
        System.out.println("Before swapping: "+num);
        System.out.println("after swapping first and last digit: "+swapped);
     }
 }
+}
+
 
 output
 enter number: 1245
 Before swapping: 1245
 after swapping first and last digit: 5241
+
+enter number: 2
+2
