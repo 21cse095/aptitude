@@ -1,0 +1,31 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       System.out.print("enter number: ");
+       int num = sc.nextInt();
+       int first = num;
+       int digitsCount = 0; //digitsCount = 3
+       while(first>=10){
+           first/=10;
+           digitsCount++;
+       }                     // first = 1
+       int last = num%10;    //last = 5
+       //remaining digits excluding first digit
+       int remDigit = num % (int)Math.pow(10,digitsCount); //remDigit = 245
+       //remaining digits excluding last digit
+       remDigit = remDigit/10;                             //remDigit = 24
+       int swapped = last * (int)Math.pow(10,digitsCount) + //5000+240+1 = 5241
+                     remDigit * 10 +  
+                     first;
+       System.out.println("Before swapping: "+num);
+       System.out.println("after swapping first and last digit: "+swapped);
+    }
+}
+
+output
+enter number: 1245
+Before swapping: 1245
+after swapping first and last digit: 5241
