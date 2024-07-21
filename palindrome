@@ -1,0 +1,46 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter string:");
+        String input = sc.nextLine();
+        String reversed = "";
+        for(int i=input.length()-1;i>=0;i--){
+            reversed = reversed+input.charAt(i);
+        }
+        if(input.toLowerCase().equals(reversed.toLowerCase())){
+            System.out.println("The string is palindrome");
+        }else{
+            System.out.println("The string is not palindrome");
+        }
+    }
+}
+output:
+enter string:
+yesha
+The string is not palindrome
+
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the number:");
+        int input = sc.nextInt();
+        int original = input;
+        int reversed = 0;
+        while(input!=0){
+            int rem = input%10;
+            reversed = reversed*10+rem;
+            input/=10;
+        }
+        if(original==reversed){
+            System.out.println("The number is palindorme");
+        }else{
+            System.out.println("The number is not palindrome");
+        }
+    }
+}
+output:
+enter the number:
+123321
+The number is palindrome
