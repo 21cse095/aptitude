@@ -1,0 +1,45 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter n value to print fibonacci series until n value: ");
+        int n = sc.nextInt();
+        if(n<0){
+            System.out.println("n should be a non-negative integer");
+        }
+        if(n>=0){
+            System.out.println("0");
+        }
+        if(n>=1){
+            System.out.println("1");
+        }
+        int prev = 0;
+        int next = 1;
+        int result = 0;
+        while(result<n){
+            result=prev+next;
+            if(result>n){
+                break;
+            }
+            System.out.println(result);
+            prev=next;
+            next=result;
+        }
+    }
+}
+
+output:
+enter n value to print fibonacci series until n value: 
+100
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
