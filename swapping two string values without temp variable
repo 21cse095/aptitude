@@ -1,0 +1,35 @@
+import java.util.Scanner;
+class HelloWorld{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String a,b;
+        while(true){
+            System.out.println("enter first string: ");
+             a = sc.nextLine();
+            System.out.println("enter second string: ");
+             b = sc.nextLine();
+            if(!a.equals(b)){
+                break;
+            }else{
+                System.out.println("The two strings are identical");
+            }
+        }
+        a=a+b;//concatenate both the strings
+        b=a.substring(0,a.length()-b.length());//specify startIndex is inclusive and endIndex is exclusive
+        a=a.substring(b.length());//can also specify startIndex alone
+        System.out.println("After Swapping");
+        System.out.println(a);
+        System.out.println(b);
+        }
+    
+}
+
+output:
+enter first string: 
+yesha
+enter second string: 
+ashwini
+After Swapping
+ashwini
+yesha
+
