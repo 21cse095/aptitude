@@ -1,0 +1,102 @@
+package com.mycompany.project1;
+class Employee {
+    private int EmpNo;
+    private String EmpName;
+    private String JoinDate;
+    private char DesignationCode;
+    private String Department;
+    private int Basic;
+    private int HRA;
+    private int IT;
+    public Employee(int EmpNo, String EmpName, String JoinDate,
+    char DesignationCode, String Department,int Basic, int HRA,int IT){
+        this.EmpNo=EmpNo;
+        this.EmpName=EmpName;
+        this.JoinDate=JoinDate;
+        this.DesignationCode=DesignationCode;
+        this.Department= Department;
+        this.Basic=Basic;
+        this.HRA=HRA;
+        this.IT=IT;
+    }
+    
+    public int getempno(){
+        return EmpNo;
+    }
+    public String getempname(){
+        return EmpName;
+    }
+    public String joindate(){
+        return JoinDate;
+    }
+    public char getdesignationcode(){
+        return DesignationCode;
+    }
+    public String department(){
+        return Department;
+    }
+    public int basic(){
+        return Basic;
+    }
+    public int HRA(){
+        return HRA;
+    }
+    public int IT(){
+        return IT;
+    }
+    public void displayDetails(int empNo, Designation[] designations) {
+           //classname myown :       
+        for (Designation des : designations) {
+            if (this.DesignationCode == des.getdesignationcode()) {
+                int salary = Basic + HRA + des.getDA() - IT;
+                System.out.println("EmpNo. EmpName Department Designation Salary");
+                System.out.println(EmpNo + "    " + EmpName + "    " + Department + "        " + des.getdesignation() + "     " + salary);
+                break;
+            }
+        }
+    }
+   
+}
+class Designation{
+  private char DesignationCode;
+  private String Designation;
+  private int DA;  
+  public Designation(char DesignationCode,String Designation,int DA){
+      this.DesignationCode=DesignationCode;
+      this.Designation=Designation;
+      this.DA=DA;
+  }
+      public char getdesignationcode(){
+          return DesignationCode;
+       }
+      public String getdesignation(){
+          return Designation;
+      }
+      public int getDA(){
+          return DA;
+      }
+      
+}
+public class Project1{
+    public static void main(String[] args) {
+        Employee[] obj = {new Employee(101, "Alice", "2022-01-10", 'B', "IT", 5000, 1000, 500),
+            new Employee(102, "Bob", "2021-07-15", 'A', "HR", 7000, 2000, 1000),
+            new Employee(103, "Charlie", "2023-03-20", 'C', "Finance", 4000, 800, 300)};
+        Designation[] obj1 = {
+            new Designation('A', "Manager", 2000),
+            new Designation('B', "Developer", 1500),
+            new Designation('C', "Analyst", 1000)
+        };
+        int searchEmpNo = 101; // Example employee number to search
+        for (Employee emp : obj) {
+            if (emp.getempno() == searchEmpNo) {
+                emp.displayDetails(emp.getempno(),obj1);
+                break;
+            }
+        }
+    }
+}
+
+output:
+EmpNo. EmpName Department Designation Salary
+101    Alice    IT        Developer     7000
