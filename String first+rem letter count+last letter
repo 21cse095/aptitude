@@ -1,0 +1,18 @@
+class HelloWorld {
+    public String word(String input1){
+        if(input1.length()<=10){
+            return input1;
+        }
+        char first = input1.charAt(0);
+        char last = input1.charAt(input1.length()-1);
+        int size = input1.length()-2;
+        String size1 = String.valueOf(size);
+        return first+size1+last;
+    }
+    public static void main(String[] args) {
+        HelloWorld obj = new HelloWorld();
+        System.out.println(obj.word("localization"));
+
+    }
+output:
+l10n
