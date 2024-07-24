@@ -1,0 +1,43 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public int number(int input1,int input2, int input3){
+        String num ="";
+        while(input1>0&&input2>0&&input3>0){
+            int rem1 = input1%10;
+            int rem2 = input2%10;
+            int rem3 = input3%10;
+            num = findmin(rem1,rem2,rem3)+num;//important note
+            input1/=10;
+            input2/=10;
+            input3/=10;
+        }
+        return Integer.valueOf(num);
+    }
+    public int findmin(int a,int b,int c){
+        int s=0;
+        if(a<=b&&a<=c){
+            s=a;
+        }else if(b<=a&&b<=c){
+            s=b;
+        }else{
+            s=c;
+        }
+        return s;
+    }
+        
+    public static void main(String[] args) {
+        HelloWorld obj = new HelloWorld();
+        System.out.println(obj.number(1234,2345,5012));
+
+    }
+}
+output:
+1012
+
+explanation 
+1234
+2345
+5012
+from ones place find the min digit i.e from 4 5 2 ,2 is minimum ,similarly do for hundred's place ,thousand's place and return it as a number.
