@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+       int N = 3;
+       int[] arr ={123,12,32415};
+  
+       int max=0;
+       for(int i=0;i<N;i++){
+          max=Math.max(max,Integer.toString(arr[i]).length()); 
+       }
+       //System.out.println(max);
+       int[] sum = new int[max];
+      
+       for(int num:arr){
+           int absNum = Math.abs(num);
+            int j=0;
+           while(absNum>0){
+               sum[j]=sum[j]+absNum%10;
+               absNum=absNum/10;
+               j++;
+           }
+       }
+       for(int i=0;i<sum.length;i++){
+         System.out.print(sum[i]+" ");
+       } 
+    }
+}
+
+output:
+10 4 5 2 3 
+explanation sum of the units place then tens place and so on 
