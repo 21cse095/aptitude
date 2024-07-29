@@ -1,0 +1,21 @@
+import java.util.Scanner;
+class HelloWorld {
+    public static int addDigits(int num){
+        while(num/10>=1){
+            int d = num%10;
+            num = num/10;
+            num=num+d;
+        }
+        return num;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter number: ");
+        int number = sc.nextInt();
+        int result = addDigits(number);
+        System.out.println(result);
+    }
+}  
+enter number: 
+12345
+6
