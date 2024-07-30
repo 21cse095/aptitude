@@ -1,0 +1,37 @@
+import java.util.*;
+class HelloWorld {
+    public static boolean rearrangeDigitsToCheckPalindrome(int input1){
+        String numstr = String.valueOf(input1);
+        Map<Character,Integer> digitCount = new HashMap<>();
+              // Count the frequency of each digit
+
+        for(char digit:numstr.toCharArray()){
+            digitCount.put(digit,digitCount.getOrDefault(digit,0)+1);
+        }
+      // Check the frequencies for the palindrome condition
+        int oddCount =0;
+        for(int count:digitCount.values()){
+            if(count%2!=0){
+                oddCount++;
+            }if(oddCount>1){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter number: ");
+        int input1=sc.nextInt();
+        boolean result=rearrangeDigitsToCheckPalindrome(input1);
+        System.out.println(result);
+    }
+}
+
+output
+enter number: 
+1233412
+true
+explanation rearrange the numbers to a form such that it forms a palindrome number ,if so return true. 1234321 -after rearranging
+
+always the count of digit of each number will be 2 and only one digit will occur -this is palindrome condition
