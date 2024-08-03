@@ -1,0 +1,33 @@
+class HelloWorld {
+    public static void main(String[] args) {
+        String input = "110010100";
+        StringBuilder result = new StringBuilder(input);
+        int i=0;
+           while(i<result.length()-1){
+            char start = result.charAt(i);
+            char end = result.charAt(i+1);
+            if(start=='1'&&end=='0'){
+                result.deleteCharAt(i);
+                i=Math.max(i-1,0);
+            }else{
+                i++;
+            }
+        }
+        System.out.println(result.toString());
+    }
+}
+ouptut
+00000
+
+explanation
+You are given a binary string S.
+You can perform the following operations on S any number of times (possibly zero): 
+• Select an index i such that S[i] is equal 1 and S[i+1] is equal to 0 for 0 ≤ i < len(S) -1. 
+• Remove exactly one of the character from S. to Find the smallest string S that you can get after performing operations on S.
+
+Sample Input  110	
+Sample output  0
+Explanation 3 Here, S = "110" We can perform two operations on S as :- 
+1. Select the index 1 and 2 and remove the character at index 1. 
+Then S becomes "10". 2. Select the index 0 and 1 and remove the character at index 0.
+Then S becomes "0". Hence, S after performing operations is equal to "0" 
