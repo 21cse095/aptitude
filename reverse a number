@@ -1,0 +1,17 @@
+class HelloWorld {
+    public static void main(String[] args) {
+        int input =6457;
+        int mod = 10;
+        int place=1;
+        while(input>=place){
+            int digit = (input%mod)/place;
+            System.out.print(digit);
+            mod*=10;
+            place*=10;
+        }
+    }
+}
+
+output:
+7546
+
