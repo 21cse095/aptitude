@@ -1,0 +1,45 @@
+public class WordDifferenceSum {
+
+    public static void main(String[] args) {
+        String input = "world wide Web";
+        String result = getDifferenceSum(input);
+        System.out.println("Output: " + result); // Expected Output: 402326
+    }
+
+    public static String getDifferenceSum(String input) {
+        String[] words = input.split(" ");
+        StringBuilder result = new StringBuilder();
+
+        for (String word : words) {
+            int sum = calculateDifferenceSum(word.toLowerCase());
+            result.append(sum);
+        }
+
+        return result.toString();
+    }
+
+    private static int calculateDifferenceSum(String word) {
+        int sum = 0;
+        int length = word.length();
+
+        for (int i = 0; i < length / 2; i++) {
+            int firstCharValue = word.charAt(i) - 'a' + 1;
+            int lastCharValue = word.charAt(length - i - 1) - 'a' + 1;
+            int diff = Math.abs(firstCharValue - lastCharValue);
+            sum += diff;
+        }
+
+        // Add the middle character's alphabetical value if the word length is odd
+        if (length % 2 != 0) {
+            int middleCharValue = word.charAt(length / 2) - 'a' + 1;
+            sum += middleCharValue;
+        }
+
+        return sum;
+    }
+}
+output:
+402326
+
+Explanation in each word, find the sum of the difference between the first letter and the last letter, second letter and the penultimate letter, and so on till the center, 
+concatenate the sums of each word to form the result, if the input is world wide Web the output should be 402326
