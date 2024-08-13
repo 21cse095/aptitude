@@ -1,0 +1,33 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static void match(String input1,String input2){
+        String[] words = input2.split(":");
+        ArrayList<String> output = new ArrayList<>();
+        for(String word:words){
+            if(word.length()==input1.length()){
+                boolean match = true;
+                for(int i=0;i<input1.length();i++){
+                    char c1=word.charAt(i);
+                    char c2=input1.charAt(i);
+                    if(c2!='_' && c1!=c2){
+                        match=false;
+                        break;
+                    }
+                }
+                if(match){
+                    output.add(word);
+                }
+            }
+        }
+        System.out.print(String.join(":",output));
+    }
+    public static void main(String[] args) {
+        String input1="fi_ter";
+        String input2="fever:filter:filer:fixer:fiber:tailor:fifar";
+        match(input1, input2);
+    }
+}
+output
+filter
