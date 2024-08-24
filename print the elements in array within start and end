@@ -1,0 +1,31 @@
+
+class HelloWorld {
+    public static int[] range(int[] arr,int start,int end){
+        int count =0;
+        for(int idx:arr){
+            if(idx>=start&&idx<=end){
+                count++;
+            }
+        }
+        int[] answer = new int[count];
+        int i=0;
+        for(int idx:arr){
+            if(idx>=start&&idx<=end){
+                answer[i++]=idx;
+            }
+        }
+        return answer;
+    }
+    public static void main(String[] args) {
+        int arr[]={20,30,31,32,40};
+        int start= 30;
+        int end = 35;
+        int[] result = range(arr,start,end);
+        for(int idx:result){
+            System.out.print(idx+" ");
+        }
+        
+    }
+}
+output:
+30 31 32 
