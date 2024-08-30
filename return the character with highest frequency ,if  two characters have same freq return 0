@@ -1,0 +1,34 @@
+import java.util.*;
+class HelloWorld {
+    public static char check(String str){
+        Map<Character,Integer> freqmap = new HashMap<>();
+        for(char c:str.toCharArray()){
+            freqmap.put(c,freqmap.getOrDefault(c,0)+1);
+        }
+        char maxchar ='0';
+        int maxfreq = 0;
+        boolean tie = false;
+        for(Map.Entry<Character,Integer> entry:freqmap.entrySet()){
+            if(entry.getValue()>maxfreq){
+                maxfreq=entry.getValue();
+                maxchar=entry.getKey();
+                tie=false;
+            }else if(entry.getValue()==maxfreq){
+                tie =true;
+            }
+        }
+        return tie?'0':maxchar;
+        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        System.out.println(check(str));
+        
+    }
+}
+output:
+yeshaa
+a
+
+aabbc
+0
